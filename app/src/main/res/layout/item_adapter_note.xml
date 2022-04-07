@@ -37,7 +37,7 @@
                 android:id="@+id/tv_judul"
                 android:textStyle="bold"
                 android:textColor="@color/black"
-                android:textSize="15sp"
+                android:textSize="20sp"
                 android:text="untuk judul"
                 app:layout_constraintTop_toBottomOf="@id/tv_id"
                 android:layout_width="wrap_content"
