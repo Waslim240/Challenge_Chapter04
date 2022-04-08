@@ -1,4 +1,4 @@
-package waslim.binar.andlima.challengech04.room
+package waslim.binar.andlima.challengech04.room.note
 
 import android.os.Parcelable
 import androidx.room.ColumnInfo

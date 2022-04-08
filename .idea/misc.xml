@@ -3,19 +3,27 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Challenge/Challenge/app/src/main/res/drawable-v24/custom_draw3.xml" value="0.104" />
+        <entry key="..\:/Challenge/Challenge/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.173" />
+        <entry key="..\:/Challenge/Challenge/app/src/main/res/drawable/custom_back.xml" value="0.197" />
         <entry key="..\:/Challenge/Challenge/app/src/main/res/drawable/custom_draw.xml" value="0.1075" />
         <entry key="..\:/Challenge/Challenge/app/src/main/res/drawable/custom_draw2.xml" value="0.1495" />
+        <entry key="..\:/Challenge/Challenge/app/src/main/res/drawable/custom_draw3.xml" value="0.129" />
         <entry key="..\:/Challenge/Challenge/app/src/main/res/drawable/custom_gradient.xml" value="0.15" />
+        <entry key="..\:/Challenge/Challenge/app/src/main/res/drawable/ic_add.xml" value="0.173" />
         <entry key="..\:/Challenge/Challenge/app/src/main/res/drawable/ic_delete.xml" value="0.189" />
+        <entry key="..\:/Challenge/Challenge/app/src/main/res/drawable/ic_launcher_background.xml" value="0.173" />
         <entry key="..\:/Challenge/Challenge/app/src/main/res/drawable/ic_update.xml" value="0.189" />
         <entry key="..\:/Challenge/Challenge/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/Challenge/Challenge/app/src/main/res/layout/custom_dialog_edit.xml" value="0.20416666666666666" />
+        <entry key="..\:/Challenge/Challenge/app/src/main/res/layout/custom_dialog_edit.xml" value="0.25" />
         <entry key="..\:/Challenge/Challenge/app/src/main/res/layout/custom_dialog_save.xml" value="0.15" />
         <entry key="..\:/Challenge/Challenge/app/src/main/res/layout/fragment_home.xml" value="0.33" />
-        <entry key="..\:/Challenge/Challenge/app/src/main/res/layout/fragment_login.xml" value="0.22" />
+        <entry key="..\:/Challenge/Challenge/app/src/main/res/layout/fragment_login.xml" value="0.25" />
         <entry key="..\:/Challenge/Challenge/app/src/main/res/layout/fragment_registrasi.xml" value="0.18" />
-        <entry key="..\:/Challenge/Challenge/app/src/main/res/layout/fragment_splash.xml" value="0.15" />
-        <entry key="..\:/Challenge/Challenge/app/src/main/res/layout/item_adapter_note.xml" value="0.33" />
+        <entry key="..\:/Challenge/Challenge/app/src/main/res/layout/fragment_splash.xml" value="0.33" />
+        <entry key="..\:/Challenge/Challenge/app/src/main/res/layout/item_adapter_note.xml" value="0.25" />
+        <entry key="..\:/Challenge/Challenge/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.173" />
+        <entry key="..\:/Challenge/Challenge/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.173" />
       </map>
     </option>
   </component>

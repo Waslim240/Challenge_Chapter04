@@ -7,56 +7,64 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.cardview.widget.CardView
-        android:backgroundTint="#C68018"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginEnd="25dp"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="10dp"
         app:cardCornerRadius="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="MissingConstraints">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:padding="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@drawable/custom_draw3"
+            android:padding="10dp">
 
             <TextView
                 android:id="@+id/tv_id"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:textSize="15sp"
-                android:text="untuk id"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="untuk id"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/tv_judul"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="10dp" />
 
             <TextView
                 android:id="@+id/tv_judul"
-                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="untuk judul"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                android:text="untuk judul"
-                app:layout_constraintTop_toBottomOf="@id/tv_id"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/tv_catatan"
+                app:layout_constraintTop_toBottomOf="@+id/tv_id"
+                tools:layout_editor_absoluteX="10dp" />
 
             <TextView
                 android:id="@+id/tv_catatan"
-                android:textStyle="bold"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="untuk keterangan"
                 android:textColor="@color/black"
                 android:textSize="15sp"
-                android:text="untuk keterangan"
-                app:layout_constraintTop_toBottomOf="@id/tv_judul"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_judul"
+                tools:layout_editor_absoluteX="10dp" />
 
             <ImageView
                 android:id="@+id/hapus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:src="@drawable/ic_delete"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -65,11 +73,11 @@
 
             <ImageView
                 android:id="@+id/update"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_update"
-                android:layout_marginEnd="10dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/ic_update"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/hapus"
                 app:layout_constraintTop_toTopOf="parent"

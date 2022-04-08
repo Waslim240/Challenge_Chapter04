@@ -6,22 +6,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.custom_dialog_edit.view.*
-import kotlinx.android.synthetic.main.custom_dialog_save.*
-import kotlinx.android.synthetic.main.custom_dialog_save.view.*
-import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlinx.android.synthetic.main.item_adapter_note.view.*
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import waslim.binar.andlima.challengech04.MainActivity
 import waslim.binar.andlima.challengech04.R
-import waslim.binar.andlima.challengech04.fragment.HomeFragment
-import waslim.binar.andlima.challengech04.room.NoteTaking
-import waslim.binar.andlima.challengech04.room.NoteTakingDatabase
+import waslim.binar.andlima.challengech04.room.note.NoteTaking
+import waslim.binar.andlima.challengech04.room.note.NoteTakingDatabase
 
+@DelicateCoroutinesApi
 class AdapterNoteTaking(val listNote : List<NoteTaking>) : RecyclerView.Adapter<AdapterNoteTaking.ViewHolder> () {
 
     private var dBase: NoteTakingDatabase? = null
@@ -30,10 +26,7 @@ class AdapterNoteTaking(val listNote : List<NoteTaking>) : RecyclerView.Adapter<
 
     }
 
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): AdapterNoteTaking.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdapterNoteTaking.ViewHolder {
         val viewItem = LayoutInflater.from(parent.context).inflate(R.layout.item_adapter_note, parent, false)
         return ViewHolder(viewItem)
     }
@@ -57,16 +50,17 @@ class AdapterNoteTaking(val listNote : List<NoteTaking>) : RecyclerView.Adapter<
 
                         (holder.itemView.context as MainActivity).runOnUiThread {
                             if (result != 0){
-                                Toast.makeText(it.context, "Data ${listNote[position].judul} Berhasil Dihapus", Toast.LENGTH_LONG).show()
                                 (holder.itemView.context as MainActivity).recreate()
                                 (holder.itemView.context as MainActivity).overridePendingTransition(0,0)
+                                Toast.makeText(it.context, "Data ${listNote[position].id} Berhasil Dihapus", Toast.LENGTH_LONG).show()
+                                dialogInterface.dismiss()
                             } else{
-                                Toast.makeText(it.context, "Data ${listNote[position].judul} Gagal Dihapus", Toast.LENGTH_LONG).show()
+                                Toast.makeText(it.context, "Data ${listNote[position].id} Gagal Dihapus", Toast.LENGTH_LONG).show()
                             }
                         }
                     }
                 } .setNegativeButton("Tidak") { dialogInterface: DialogInterface, i: Int ->
-                    Toast.makeText(it.context, "Data ${listNote[position].judul} Tidak Jadi Dihapus", Toast.LENGTH_LONG).show()
+                    Toast.makeText(it.context, "Data ${listNote[position].id} Tidak Jadi Dihapus", Toast.LENGTH_LONG).show()
                     dialogInterface.dismiss()
                 }
                 .show()
@@ -99,11 +93,12 @@ class AdapterNoteTaking(val listNote : List<NoteTaking>) : RecyclerView.Adapter<
 
                     (pdh.context as MainActivity).runOnUiThread {
                         if (edt != 0){
-                            Toast.makeText(it.context, "Data ${listNote[position].judul} Diedit", Toast.LENGTH_LONG).show()
                             (holder.itemView.context as MainActivity).recreate()
                             (holder.itemView.context as MainActivity).overridePendingTransition(0,0)
+                            Toast.makeText(it.context, "Data ${listNote[position].id} Berhasil Diubah ", Toast.LENGTH_LONG).show()
+                            alertD.dismiss()
                         } else {
-                            Toast.makeText(it.context, "Data ${listNote[position].judul} Gagal Diedit", Toast.LENGTH_LONG).show()
+                            Toast.makeText(it.context, "Data ${listNote[position].id} Gagal DiUbah", Toast.LENGTH_LONG).show()
                         }
 
                     }

@@ -1,7 +1,5 @@
 package waslim.binar.andlima.challengech04.fragment
 
-import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,11 +8,16 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.fragment_registrasi.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
 import waslim.binar.andlima.challengech04.R
+import waslim.binar.andlima.challengech04.room.user.User
+import waslim.binar.andlima.challengech04.room.user.UserDatabase
 
 
 class RegistrasiFragment : Fragment() {
-    lateinit var regist : SharedPreferences
+//    lateinit var regist : SharedPreferences
+    private var dataBase : UserDatabase? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,33 +30,105 @@ class RegistrasiFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        regist = requireContext().getSharedPreferences("RGST", Context.MODE_PRIVATE)
 
-        rgst()
+
+//        regist = requireContext().getSharedPreferences("RGST", Context.MODE_PRIVATE)
+//
+        daftar()
+//
+//        prosesRgst()
     }
 
-    private fun rgst(){
+    fun daftar(){
         daftar.setOnClickListener {
-            val usernm = masukan_username_regist.text.toString()
-            val email = masukan_email_regist.text.toString()
-            val konfpass = masukan_konfirmasi_password_regist.text.toString()
-            val passw = masukan_password_regist.text.toString()
-
-            if (usernm == "" || email == "" || passw == "" ){
+            if (masukan_username_regist.text.toString() == "" || masukan_email_regist.text.toString() == "" ||
+                masukan_konfirmasi_password_regist.text.toString() == "" || masukan_password_regist.text.toString() == ""){
                 Toast.makeText(requireContext(), "Lengkapi Data", Toast.LENGTH_LONG).show()
-            } else if (konfpass != passw) {
-                Toast.makeText(requireContext(), "Konfirmasi Password Salah", Toast.LENGTH_LONG).show()
+            } else if (masukan_konfirmasi_password_regist.text.toString() !=  masukan_password_regist.text.toString()){
+                Toast.makeText(requireContext(), "Password & Konfirmasi Password Tidak Sesuai", Toast.LENGTH_LONG).show()
             } else{
-                val sf = regist.edit()
-                sf.putString("USR", usernm)
-                sf.putString("EML", email)
-                sf.putString("KPS", konfpass)
-                sf.putString("PSS", passw)
-                sf.apply()
+                prosesRgst()
+                Toast.makeText(requireContext(), "Pendaftaran Berhasil", Toast.LENGTH_LONG).show()
                 Navigation.findNavController(requireView()).navigate(R.id.action_registrasiFragment_to_loginFragment)
             }
         }
     }
+
+    fun prosesRgst(){
+
+//        daftar.setOnClickListener {
+//            val usernm = masukan_username_regist.text.toString()
+//            val email = masukan_email_regist.text.toString()
+//            val konfpass = masukan_konfirmasi_password_regist.text.toString()
+//            val passw = masukan_password_regist.text.toString()
+//
+//            if (usernm == "" || email == "" || passw == "" ){
+//                Toast.makeText(requireContext(), "Lengkapi Data", Toast.LENGTH_LONG).show()
+//            } else if (konfpass != passw) {
+//                Toast.makeText(requireContext(), "Konfirmasi Password Salah", Toast.LENGTH_LONG).show()
+//            } else{
+//                val sf = regist.edit()
+//                sf.putString("USR", usernm)
+//                sf.putString("EML", email)
+//                sf.putString("KPS", konfpass)
+//                sf.putString("PSS", passw)
+//                sf.apply()
+//                Navigation.findNavController(requireView()).navigate(R.id.action_registrasiFragment_to_loginFragment)
+//            }
+//        }
+//        val result = dB?.noteTakingDao()?.insertNoteTaking(NoteTaking(null, jdl, ctt))
+
+//        daftar.setOnClickListener {
+//            dataBase = NoteTakingDatabase.getInstance(requireContext())
+//
+//            GlobalScope.async {
+//
+//                val user = masukan_username_regist.text.toString()
+//                val email = masukan_email_regist.text.toString()
+//                val konPass = masukan_konfirmasi_password_regist.text.toString()
+//                val pass = masukan_password_regist.text.toString()
+//
+//                val regist = dataBase?.userDao()?.insertUser(User(null, email, user, pass))
+//
+//                activity?.runOnUiThread {
+////                if (regist !=0.toLong()){
+////                    Toast.makeText(requireContext(), "Pendaftaran telah berhasil", Toast.LENGTH_LONG).show()
+////                    Navigation.findNavController(requireView()).navigate(R.id.action_registrasiFragment_to_loginFragment)
+////                }
+//
+//                    if (regist != 0.toLong()){
+//                        Toast.makeText(requireContext(), "Pendaftaran telah berhasil", Toast.LENGTH_LONG).show()
+//                        Navigation.findNavController(requireView()).navigate(R.id.action_registrasiFragment_to_loginFragment)
+//                    } else if (user=="" || email=="" || konPass=="" || pass==""){
+//                        Toast.makeText(requireContext(), "Lengkapi Data Pendaftaran", Toast.LENGTH_LONG).show()
+//                    } else{
+//                        Toast.makeText(requireContext(), "Pendaftaran Gagal", Toast.LENGTH_LONG).show()
+//                    }
+//                }
+//            }
+//        }
+
+        dataBase = UserDatabase.getInstance(requireContext())
+
+        GlobalScope.async {
+            val user = masukan_username_regist.text.toString()
+            val email = masukan_email_regist.text.toString()
+            val konPass = masukan_konfirmasi_password_regist.text.toString()
+            val pass = masukan_password_regist.text.toString()
+
+            val regist = dataBase?.userDao()?.insertUser(User(null, email, user, pass))
+
+            activity?.runOnUiThread {
+                if (regist != 0.toLong()){
+                    Toast.makeText(requireContext(), "Pendaftaran telah berhasil", Toast.LENGTH_LONG).show()
+                } else {
+                    Toast.makeText(requireContext(), "Pendaftaran Gagal", Toast.LENGTH_LONG).show()
+                }
+            }
+        }
+    }
+
+
 
 
 }

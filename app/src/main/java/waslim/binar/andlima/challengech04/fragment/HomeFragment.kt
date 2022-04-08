@@ -1,22 +1,18 @@
 package waslim.binar.andlima.challengech04.fragment
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.provider.ContactsContract
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.custom_dialog_save.*
 import kotlinx.android.synthetic.main.custom_dialog_save.view.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.coroutines.GlobalScope
@@ -24,8 +20,8 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import waslim.binar.andlima.challengech04.R
 import waslim.binar.andlima.challengech04.adapter.AdapterNoteTaking
-import waslim.binar.andlima.challengech04.room.NoteTaking
-import waslim.binar.andlima.challengech04.room.NoteTakingDatabase
+import waslim.binar.andlima.challengech04.room.note.NoteTaking
+import waslim.binar.andlima.challengech04.room.note.NoteTakingDatabase
 
 class HomeFragment : Fragment() {
     private var dB : NoteTakingDatabase? = null
@@ -39,14 +35,15 @@ class HomeFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         dB = NoteTakingDatabase.getInstance(requireContext())
 
-        login = requireContext().getSharedPreferences("data", Context.MODE_PRIVATE)
+        login = requireContext().getSharedPreferences("DATAUSER", Context.MODE_PRIVATE)
 
-        val ambilUsername = login.getString("USER", "")
+        val ambilUsername = login.getString("USERNAME", "")
         welcome_username.text = "Welcome, $ambilUsername"
 
 
@@ -93,14 +90,14 @@ class HomeFragment : Fragment() {
 
                     val result = dB?.noteTakingDao()?.insertNoteTaking(NoteTaking(null, jdl, ctt))
 
-                    activity?.runOnUiThread {
+                    requireActivity().runOnUiThread {
                         if (result != 0.toLong()){
                             Toast.makeText(requireContext(), "Berhasil Menambahkan", Toast.LENGTH_LONG).show()
                             alertB.dismiss()
                         } else{
                             Toast.makeText(requireContext(), "Gagal Menambahkan", Toast.LENGTH_LONG).show()
                         }
-                        Navigation.findNavController(requireView()).navigate(R.id.action_homeFragment_self)
+                        activity?.recreate()
 
                     }
                 }
@@ -124,6 +121,7 @@ class HomeFragment : Fragment() {
             }
         }
     }
+
 
 
 }

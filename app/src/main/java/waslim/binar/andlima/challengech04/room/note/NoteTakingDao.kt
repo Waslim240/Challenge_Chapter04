@@ -1,6 +1,7 @@
-package waslim.binar.andlima.challengech04.room
+package waslim.binar.andlima.challengech04.room.note
 
 import androidx.room.*
+import waslim.binar.andlima.challengech04.room.note.NoteTaking
 
 @Dao
 interface NoteTakingDao {

@@ -1,11 +1,14 @@
-package waslim.binar.andlima.challengech04.room
+package waslim.binar.andlima.challengech04.room.note
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
+
 @Database(entities = [NoteTaking::class], version = 1)
+
+//@Database(entities = [NoteTaking::class], version = 1)
 abstract class NoteTakingDatabase : RoomDatabase() {
     abstract fun noteTakingDao() : NoteTakingDao
 

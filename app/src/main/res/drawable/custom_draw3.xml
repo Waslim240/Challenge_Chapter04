@@ -7,15 +7,15 @@
         <!--mengatur warna gradient-->
         <gradient
             android:startColor="#939809"
-            android:centerColor="#F1DA0A"
-            android:endColor="#FF5722"
+            android:centerColor="#F4960B"
+            android:endColor="#6E4406"
             android:angle="270"
             />
 
         <corners
-            android:bottomLeftRadius="1dp"
-            android:bottomRightRadius="1dp"
-            android:topLeftRadius="1dp"
-            android:topRightRadius="1dp"
+            android:bottomLeftRadius="4dp"
+            android:bottomRightRadius="4dp"
+            android:topLeftRadius="4dp"
+            android:topRightRadius="4dp"
             />
 </shape>
