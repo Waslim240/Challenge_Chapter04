@@ -7,8 +7,6 @@ import androidx.room.RoomDatabase
 
 
 @Database(entities = [NoteTaking::class], version = 1)
-
-//@Database(entities = [NoteTaking::class], version = 1)
 abstract class NoteTakingDatabase : RoomDatabase() {
     abstract fun noteTakingDao() : NoteTakingDao
 

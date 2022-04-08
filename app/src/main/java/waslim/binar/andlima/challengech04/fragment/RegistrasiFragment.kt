@@ -30,13 +30,8 @@ class RegistrasiFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-
-//        regist = requireContext().getSharedPreferences("RGST", Context.MODE_PRIVATE)
-//
         daftar()
-//
-//        prosesRgst()
+
     }
 
     fun daftar(){
@@ -55,58 +50,6 @@ class RegistrasiFragment : Fragment() {
     }
 
     fun prosesRgst(){
-
-//        daftar.setOnClickListener {
-//            val usernm = masukan_username_regist.text.toString()
-//            val email = masukan_email_regist.text.toString()
-//            val konfpass = masukan_konfirmasi_password_regist.text.toString()
-//            val passw = masukan_password_regist.text.toString()
-//
-//            if (usernm == "" || email == "" || passw == "" ){
-//                Toast.makeText(requireContext(), "Lengkapi Data", Toast.LENGTH_LONG).show()
-//            } else if (konfpass != passw) {
-//                Toast.makeText(requireContext(), "Konfirmasi Password Salah", Toast.LENGTH_LONG).show()
-//            } else{
-//                val sf = regist.edit()
-//                sf.putString("USR", usernm)
-//                sf.putString("EML", email)
-//                sf.putString("KPS", konfpass)
-//                sf.putString("PSS", passw)
-//                sf.apply()
-//                Navigation.findNavController(requireView()).navigate(R.id.action_registrasiFragment_to_loginFragment)
-//            }
-//        }
-//        val result = dB?.noteTakingDao()?.insertNoteTaking(NoteTaking(null, jdl, ctt))
-
-//        daftar.setOnClickListener {
-//            dataBase = NoteTakingDatabase.getInstance(requireContext())
-//
-//            GlobalScope.async {
-//
-//                val user = masukan_username_regist.text.toString()
-//                val email = masukan_email_regist.text.toString()
-//                val konPass = masukan_konfirmasi_password_regist.text.toString()
-//                val pass = masukan_password_regist.text.toString()
-//
-//                val regist = dataBase?.userDao()?.insertUser(User(null, email, user, pass))
-//
-//                activity?.runOnUiThread {
-////                if (regist !=0.toLong()){
-////                    Toast.makeText(requireContext(), "Pendaftaran telah berhasil", Toast.LENGTH_LONG).show()
-////                    Navigation.findNavController(requireView()).navigate(R.id.action_registrasiFragment_to_loginFragment)
-////                }
-//
-//                    if (regist != 0.toLong()){
-//                        Toast.makeText(requireContext(), "Pendaftaran telah berhasil", Toast.LENGTH_LONG).show()
-//                        Navigation.findNavController(requireView()).navigate(R.id.action_registrasiFragment_to_loginFragment)
-//                    } else if (user=="" || email=="" || konPass=="" || pass==""){
-//                        Toast.makeText(requireContext(), "Lengkapi Data Pendaftaran", Toast.LENGTH_LONG).show()
-//                    } else{
-//                        Toast.makeText(requireContext(), "Pendaftaran Gagal", Toast.LENGTH_LONG).show()
-//                    }
-//                }
-//            }
-//        }
 
         dataBase = UserDatabase.getInstance(requireContext())
 
