@@ -30,8 +30,8 @@ class LoginFragment : Fragment() {
 
         if (requireContext().getSharedPreferences("DATAUSER", Context.MODE_PRIVATE).contains("USERNAME")){
             Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_homeFragment)
+            requireActivity().finish()
         }
-
 
         masuk()
         rgst()
@@ -48,16 +48,21 @@ class LoginFragment : Fragment() {
 
                 val msk = bData?.userDao()?.getPengguna(eml, pss)
 
-                if (eml == "" || pss == "") {
-                    Toast.makeText(requireContext(), "Lengkapi Data", Toast.LENGTH_SHORT).show()
-                } else if (msk.isNullOrEmpty()){
-                    Toast.makeText(requireContext(), "Emai & Password Tidak Cocok", Toast.LENGTH_SHORT).show()
-                } else {
-                    val sUser = requireContext().getSharedPreferences("DATAUSER", Context.MODE_PRIVATE)
-                    val prefs = sUser.edit()
-                    prefs.putString("USERNAME", msk)
-                    prefs.apply()
-                    Navigation.findNavController(requireView()).navigate(R.id.action_loginFragment_to_homeFragment)
+                when {
+                    eml == "" || pss == "" -> {
+                        Toast.makeText(requireContext(), "Lengkapi Data", Toast.LENGTH_SHORT).show()
+                    }
+                    msk.isNullOrEmpty() -> {
+                        Toast.makeText(requireContext(), "Emai & Password Tidak Cocok", Toast.LENGTH_SHORT).show()
+                    }
+                    else -> {
+                        val sUser = requireContext().getSharedPreferences("DATAUSER", Context.MODE_PRIVATE)
+                        val prefs = sUser.edit()
+                        prefs.putString("USERNAME", msk)
+                        prefs.apply()
+                        Navigation.findNavController(requireView()).navigate(R.id.action_loginFragment_to_homeFragment)
+                        requireActivity().finish()
+                    }
                 }
             }
         }

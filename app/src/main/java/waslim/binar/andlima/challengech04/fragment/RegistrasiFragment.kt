@@ -34,7 +34,7 @@ class RegistrasiFragment : Fragment() {
 
     }
 
-    fun daftar(){
+    private fun daftar(){
         daftar.setOnClickListener {
             if (masukan_username_regist.text.toString() == "" || masukan_email_regist.text.toString() == "" ||
                 masukan_konfirmasi_password_regist.text.toString() == "" || masukan_password_regist.text.toString() == ""){
@@ -45,11 +45,12 @@ class RegistrasiFragment : Fragment() {
                 prosesRgst()
                 Toast.makeText(requireContext(), "Pendaftaran Berhasil", Toast.LENGTH_LONG).show()
                 Navigation.findNavController(requireView()).navigate(R.id.action_registrasiFragment_to_loginFragment)
+                requireActivity().finish()
             }
         }
     }
 
-    fun prosesRgst(){
+    private fun prosesRgst(){
 
         dataBase = UserDatabase.getInstance(requireContext())
 

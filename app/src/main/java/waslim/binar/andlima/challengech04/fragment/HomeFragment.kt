@@ -66,6 +66,7 @@ class HomeFragment : Fragment() {
                 sf.apply()
                 Navigation.findNavController(requireView()).navigate(R.id.action_homeFragment_to_loginFragment)
                 Toast.makeText(requireContext(), "Berhasil Logout", Toast.LENGTH_LONG).show()
+                requireActivity().finish()
             } .setNegativeButton("Tidak"){ dialogInterface: DialogInterface, i: Int ->
                 algt.dismiss()
                 Toast.makeText(requireContext(), "Batal Logout", Toast.LENGTH_LONG).show()
